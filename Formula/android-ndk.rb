@@ -48,6 +48,7 @@ class AndroidNdk < Formula
 
   test do
     (testpath/"test.c").write("int main() { return 0; }")
-    system `/usr/local/opt/android-ndk/ndk-which gcc`, test.c
+    cc =  `/usr/local/opt/android-ndk/ndk-which gcc`.strip
+    system cc, "-c", "test.c", "-o", "test"
   end
 end
