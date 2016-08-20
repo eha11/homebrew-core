@@ -48,7 +48,7 @@ class AndroidNdk < Formula
 
   test do
     (testpath/"test.c").write("int main() { return 0; }")
-    cc =  `/usr/local/opt/android-ndk/ndk-which gcc`.strip
+    cc = Utils.popen_read("#{bin}/ndk-which gcc").strip
     system cc, "-c", "test.c", "-o", "test"
   end
 end
